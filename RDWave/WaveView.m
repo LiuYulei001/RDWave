@@ -10,7 +10,6 @@
 
 @interface WaveView ()
 {
-    UILabel *textLabel;
     CADisplayLink *displayLink;
     CGFloat currentOffset;
 }
@@ -31,14 +30,9 @@
         _waveColor = [UIColor blueColor];
         self.backgroundColor = [UIColor whiteColor];
         [self drectCircle];
-//        [self contrutUI];
+        [self contrutUI];
     }
     return self;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    textLabel.font = [UIFont boldSystemFontOfSize:self.bounds.size.height * 0.5];
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -98,16 +92,14 @@
 }
 
 - (void)contrutUI {
-    textLabel = [UILabel new];
-    textLabel.textColor = _waveColor;
-    textLabel.textAlignment = NSTextAlignmentCenter;
-    textLabel.frame = self.bounds;
-    [self addSubview:textLabel];
+    _textLabel = [UILabel new];
+    _textLabel.textColor = _waveColor;
+    _textLabel.textAlignment = NSTextAlignmentCenter;
+    _textLabel.frame = self.bounds;
+    _textLabel.font = [UIFont boldSystemFontOfSize:self.bounds.size.height * 0.5];
+    [self addSubview:_textLabel];
 }
 
-- (void)setText:(NSString *)text {
-    textLabel.text = text;
-}
     
 - (void)drectCircle {
     self.layer.cornerRadius = self.frame.size.width * 0.5;

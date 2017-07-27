@@ -18,6 +18,7 @@
 //当offset = 1时，一秒钟曲线移动一个周期，可以通过修改它，改变波浪速度
 @property (nonatomic, assign) CGFloat offset;
 
-- (void)setText:(NSString *)text;
+@property (nonatomic, strong) UILabel *textLabel;
+
 
 @end

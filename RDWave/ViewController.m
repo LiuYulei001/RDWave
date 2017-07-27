@@ -10,6 +10,9 @@
 #import "RDWave.h"
 
 @interface ViewController ()
+{
+    RDWave *wave;
+}
 
 @end
 
@@ -18,9 +21,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    RDWave *wave = [[RDWave alloc] initWithFrame:CGRectMake(100, 100, 100, 100) andText:@"RD"];
+    wave = [[RDWave alloc] initWithFrame:CGRectMake(100, 100, 100, 100) andText:@"RD"];
+    wave.progress = 0.5;
     [self.view addSubview:wave];
     
+    UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(50, 300, 270, 50)];
+    [slider addTarget:self action:@selector(scrollSlider:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:slider];
+    
+}
+
+- (void)scrollSlider:(UISlider *)slider {
+    wave.progress = slider.value;
 }
 
 

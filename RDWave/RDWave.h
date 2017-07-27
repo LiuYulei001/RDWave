@@ -11,6 +11,8 @@
 @interface RDWave : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame andText:(NSString *)text;
+
+@property (nonatomic, assign) CGFloat progress;
 //@property (nonatomic, copy) UIColor *topColor;
 //@property (nonatomic, copy) UIColor *bottomColor;
 

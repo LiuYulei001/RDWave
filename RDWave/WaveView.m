@@ -10,8 +10,9 @@
 
 @interface WaveView ()
 {
-    CADisplayLink *displayLink;
-    CGFloat currentOffset;
+    CADisplayLink *_displayLink;
+    CGFloat _currentOffset;
+    CGFloat _currentProgress;
 }
 
 
@@ -26,10 +27,11 @@
     if (self) {
         _progress = 0.5;
         _amplitude = 0.1;
+        _currentProgress = 1;
         _offset = 1 * (M_PI * 2 / 60);
         _waveColor = [UIColor blueColor];
         self.backgroundColor = [UIColor whiteColor];
-        [self drectCircle];
+        [self drawCircle];
         [self contrutUI];
     }
     return self;
@@ -43,13 +45,13 @@
     CGContextSetFillColorWithColor(ctx, _waveColor.CGColor);
     
     float radius = MIN(rect.size.width, rect.size.height);
-    float startY = _progress * radius;
+    float startY = _currentProgress * radius;
     float y = startY;
     
     CGPathMoveToPoint(path, nil, 0, y);
     
     for(float x = 0; x <= radius; x++){
-        y = _amplitude * radius * sin( x / radius * M_PI * 2 + currentOffset) + startY;
+        y = _amplitude * radius * sin( x / radius * M_PI * 2 + _currentOffset) + startY;
         CGPathAddLineToPoint(path, nil, x, y);
     }
     
@@ -74,21 +76,30 @@
 }
 
 - (void)startAnimation {
-    if (displayLink) {
+    if (_displayLink) {
         [self stopAnimation];
     }
-    displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(calculateOffset)];
-    [displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(calculateOffset)];
+    [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
 }
 
 - (void)calculateOffset {
-    currentOffset += _offset;
+    _currentOffset += _offset;
+    
+    CGFloat space = 1 / 120.0;
+    if (fabs(_currentProgress - _progress) < space) {
+        _currentProgress = _progress;
+    } else if (_currentProgress > _progress) {
+        _currentProgress -= space;
+    } else if (_currentProgress < _progress) {
+        _currentProgress += space;
+    }
     [self setNeedsDisplay];
 }
 
 - (void)stopAnimation {
-    [displayLink invalidate];
-    displayLink = nil;
+    [_displayLink invalidate];
+    _displayLink = nil;
 }
 
 - (void)contrutUI {
@@ -101,11 +112,13 @@
 }
 
     
-- (void)drectCircle {
+- (void)drawCircle {
     self.layer.cornerRadius = self.frame.size.width * 0.5;
     self.layer.masksToBounds = YES;
     self.layer.borderWidth = 1;
     self.layer.borderColor = [UIColor greenColor].CGColor;
 }
+
+
 
 @end

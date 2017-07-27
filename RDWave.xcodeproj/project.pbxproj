@@ -15,6 +15,7 @@
 		EA29BA631F29C6F2001ADA92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA29BA611F29C6F2001ADA92 /* LaunchScreen.storyboard */; };
 		EA29BA6E1F29C6F2001ADA92 /* RDWaveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29BA6D1F29C6F2001ADA92 /* RDWaveTests.m */; };
 		EA29BA791F29C6F2001ADA92 /* RDWaveUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29BA781F29C6F2001ADA92 /* RDWaveUITests.m */; };
+		EA29BA881F29C72D001ADA92 /* WaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA29BA871F29C72D001ADA92 /* WaveView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		EA29BA741F29C6F2001ADA92 /* RDWaveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RDWaveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA29BA781F29C6F2001ADA92 /* RDWaveUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RDWaveUITests.m; sourceTree = "<group>"; };
 		EA29BA7A1F29C6F2001ADA92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA29BA861F29C72D001ADA92 /* WaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaveView.h; sourceTree = "<group>"; };
+		EA29BA871F29C72D001ADA92 /* WaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaveView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +112,8 @@
 				EA29BA5F1F29C6F2001ADA92 /* Assets.xcassets */,
 				EA29BA611F29C6F2001ADA92 /* LaunchScreen.storyboard */,
 				EA29BA641F29C6F2001ADA92 /* Info.plist */,
+				EA29BA861F29C72D001ADA92 /* WaveView.h */,
+				EA29BA871F29C72D001ADA92 /* WaveView.m */,
 				EA29BA531F29C6F2001ADA92 /* Supporting Files */,
 			);
 			path = RDWave;
@@ -279,6 +284,7 @@
 				EA29BA5B1F29C6F2001ADA92 /* ViewController.m in Sources */,
 				EA29BA581F29C6F2001ADA92 /* AppDelegate.m in Sources */,
 				EA29BA551F29C6F2001ADA92 /* main.m in Sources */,
+				EA29BA881F29C72D001ADA92 /* WaveView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
